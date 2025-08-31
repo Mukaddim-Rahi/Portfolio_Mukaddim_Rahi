@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Abu Mukaddim Rahi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Additional styles for achievements page */
+        .achievements-hero {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .achievements-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .achievements-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 90px;
+            left: 20px;
+            background: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+        }
+
+        .achievements-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #007bff;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .achievement-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .achievement-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .achievement-info h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .achievement-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .achievement-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .achievement-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .skill-tag {
+            background: #f0f7ff;
+            color: #007bff;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .achievement-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .achievement-link {
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .achievement-link:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .achievement-link.certificate {
+            background: #28a745;
+        }
+
+        .achievement-link.certificate:hover {
+            background: #1e7e34;
+        }
+
+        .stats-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .achievements-hero h1 {
+                font-size: 2rem;
+            }
+
+            .back-btn {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 20px;
+                display: inline-flex;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .achievement-card {
+                padding: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">Abu Mukaddim Rahi</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#publications" class="nav-link">Publications</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="achievements.html" class="nav-link active">Achievements</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back Button -->
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+        Back to Portfolio
+    </a>
+
+    <!-- Hero Section -->
+    <section class="achievements-hero">
+        <div class="achievements-container">
+            <h1>My Achievements</h1>
+            <!-- <p>A collection of awards, recognitions, and milestones that showcase my journey in research, development, and academic excellence.</p> -->
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="achievements-container">
+        <!-- <section class="stats-section">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Quick Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">Publications</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Conference Papers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2+</div>
+                    <div class="stat-label">Journal Papers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Major Projects</div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Achievements Grid -->
+        <section class="achievements-grid">
+            <!-- Research Excellence -->
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <!-- <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div> -->
+                    <div class="achievement-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h4>Machine Learning Specialization</h4>
+                        <div class="achievement-date">2024</div>
+                        <div class="achievement-date">Stanford Online</div>
+                    </div>
+                </div>
+                <div class="achievement-description">
+                    This course, offered on Coursera by Stanford Online, is instructed by Andrew Ng.
+                </div>
+                <div class="achievement-links">
+                    <!-- <a href="file:///E:/Certificate/Coursera%204LO5NF5ATYU5.pdf" class="achievement-link certificate">
+                        <i class="fas fa-certificate"></i>
+                        Certificate
+                    </a> -->
+                    <a href="assets\pdfs\Coursera 4LO5NF5ATYU5.pdf" class="pub-link paper" target="_blank"> <i
+                            class="fas fa-certificate"></i> Certificate</a>
+                </div>
+            </div>
+
+
+            <!-- Best Paper Award -->
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h4>High-Quality Reviews</h4>
+                        <div class="achievement-date">03-06 July 2025</div>
+                    </div>
+                </div>
+                <div class="achievement-description">
+                    The 5th International Conference on Electrical, Computer and Energy Technologies (ICECET 2025)
+                </div>
+                <div class="achievement-skills">
+                    <div class="achievement-links">
+                        <a href="assets\pdfs\Reviewer Certificate_Abu Mukaddim Rahi.pdf" class="pub-link paper"
+                            target="_blank">
+                            <i class="fas fa-certificate"></i> Certificate
+                        </a>
+                    </div>
+                    <div class="achievement-links">
+                        <a href="#" class="pub-link paper" style="background-color: #90ee90; color: #000;"
+                            onclick="openModal(); return false;">
+                            <i class="fas fa-hand-holding-heart"></i> Appreciation
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Academic Achievement -->
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h4>Certificate of Recognition</h4>
+                        <div class="achievement-date">25 Feb 2025</div>
+                    </div>
+                </div>
+                <div class="achievement-description">
+                    IEEE Conference on Secure and Trustworthy CyberInfrastructure for IoT and Microelectronics (SaTC
+                    2025)
+                </div>
+                <div class="achievement-skills">
+                    <div class="achievement-links">
+                        <a href="assets\pdfs\SATC_Certificate.pdf" class="pub-link paper" target="_blank"> <i
+                                class="fas fa-certificate"></i> Certificate</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Professional Recognition -->
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <!-- <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div> -->
+                    <div class="achievement-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h4> Presentation & Public Speaking</h4>
+                        <div class="achievement-date">2022</div>
+                        <!-- <div class="achievement-date">10 Minute School</div> -->
+                    </div>
+                </div>
+                <div class="achievement-description">
+                    This course was offered on 10 Minute School and has been successfully completed.
+                </div>
+                <div class="achievement-links">
+
+                    <a href="assets\pdfs\Presentation and Public Speaking Cirtificate.pdf" class="pub-link paper"
+                        target="_blank"> <i class="fas fa-certificate"></i> Certificate</a>
+                </div>
+            </div>
+
+            <!-- Conference Presentation -->
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <div class="achievement-icon">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h4>International Conference Speaker</h4>
+                        <div class="achievement-date">2025</div>
+                    </div>
+                </div>
+                <div class="achievement-description">
+                    IEEE 4th International Conference on Computing and Machine Intelligence (ICMI 2025), in Central
+                    Michigan University.
+                </div>
+                <div class="achievement-links">
+
+                    <a href="assets\pdfs\ICCMI_Presentation.pdf" class="pub-link paper" target="_blank"> <i
+                            class="fas fa-certificate"></i> Certificate</a>
+                </div>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <!-- <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div> -->
+                    <div class="achievement-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h4> Web Design</h4>
+                        <div class="achievement-date">2021</div>
+                        <!-- <div class="achievement-date">10 Minute School</div> -->
+                    </div>
+                </div>
+                <div class="achievement-description">
+                    This course was offered on 10 Minute School and has been successfully completed.
+                </div>
+                <div class="achievement-links">
+
+                    <a href="assets\pdfs\WEB Design.pdf" class="pub-link paper" target="_blank"> <i
+                            class="fas fa-certificate"></i> Certificate</a>
+                </div>
+            </div>
+            <!-- Innovation Award -->
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <div class="achievement-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h4>Introduction to R</h4>
+                        <div class="achievement-date">2022</div>
+                    </div>
+                </div>
+                <div class="achievement-description">
+                    Statement of Accomplishment for completing the "Introduction to R" course on DataCamp, demonstrating
+                    proficiency in R programming and data analysis skills.
+                </div>
+
+                <div class="achievement-links">
+
+                    <a href="assets\pdfs\datacamp_certificate.pdf" class="pub-link paper" target="_blank"> <i
+                            class="fas fa-certificate"></i> Certificate</a>
+                </div>
+            </div>
+
+            <!-- Scholarship Award -->
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h4>Team Leadership Excellence</h4>
+                        <div class="achievement-date">IEEE SPAC2022</div>
+                    </div>
+                </div>
+                <div class="achievement-description">
+                    Successfully led the teams as a core volunteer and coordinating with international collaborators in
+                    Student Professional Awareness Conference 2022(SPAC'22).
+                </div>
+                <div class="achievement-links">
+                    <a href="assets\pdfs\Spac 2022.pdf" class="pub-link paper" target="_blank"> <i
+                            class="fas fa-certificate"></i> Certificate</a>
+                </div>
+            </div>
+
+            <!-- Team Leadership -->
+            <div class="achievement-card">
+                <div class="achievement-header">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="achievement-info">
+                        <h4>Certificate of Participation</h4>
+                        <div class="achievement-date">IEEE NSU Student Branch</div>
+                    </div>
+                </div>
+                <div class="achievement-description">
+                    Japan-Bangladesh Robotics & Advanced Technology Research Center (JBRATRC) .
+                </div>
+                <div class="achievement-links">
+                    <a href="assets\pdfs\Japan Bng.pdf" class="pub-link paper" target="_blank"> <i
+                            class="fas fa-certificate"></i> Certificate</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="screenshotModal"
+        style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center;">
+        <div
+            style="position:relative; background:#fff; padding:20px; border-radius:10px; max-width:90%; max-height:90%;">
+            <span style="position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px;"
+                onclick="closeModal()">&times;</span>
+            <img src="assets\Screenshot Reviewer.jpg" alt="Appreciation Screenshot"
+                style="width:100%; height:auto; border-radius:5px;">
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('screenshotModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('screenshotModal').style.display = 'none';
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
