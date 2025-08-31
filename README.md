@@ -1,4 +1,5 @@
-# Abu Mukaddim Rahi – Researcher & Web Developer
+# Abu Mukaddim Rahi 
+### Researcher & Web Developer
 
 Welcome to my portfolio repository! I'm a researcher and developer specializing in deep learning, medical imaging, and natural language processing. Currently, I serve as a Research Assistant at North South University and as a Senior Web Developer at Hash Solution in Dubai.
 
