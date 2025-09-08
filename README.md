@@ -6,7 +6,7 @@ Welcome to my portfolio repository! I'm a researcher and developer specializing 
 ## 🌐 Portfolio Website
 
 Explore my work and projects at:  
-👉 [https://frabjous-gecko-a03379.netlify.app/](https://frabjous-gecko-a03379.netlify.app/)
+👉 [Portfolio_Mukaddim_Rahi](https://mukaddim-rahi.github.io/Portfolio_Mukaddim_Rahi/)
 
 ## 🧠 About Me
 
